@@ -15,3 +15,13 @@ Vous pouvez utiliser les données de test présentes dans le script `model.py` o
 Pour obtenir la prédiction sur la journée, lancer le script `model.py` et un graphique de la consommation par heure s'affichera.
 
 <img width="554" height="413" alt="image" src="https://github.com/user-attachments/assets/4cf68c28-7933-4c83-83a5-08c7c4739e42" />
+
+## Paramètres ayant une influence sur la consommation
+- Plus il fait froid, plus la consommation augmente, à cause du chauffage
+- Plus il fait chaud, plus la consommation augmente, à cause de la climatisation
+- Si la température est proche des 20 degrés, c'est là ou la consommation est la plus faible
+- La température ressentie baisse avec le vent
+- La consommation est plus élevée les jours de travail que les jours fériés, à cause des entreprises et des usines qui fonctionnent
+- La consommation est plus élevée en Hiver et en Été car les températures sont plus extrêmes
+- La consommation dépend de l'heure de la journée, la nuit elle est plus faible car tout le monde dort, le matin et le soir elle est à son maximum car tout le monde se lève le matin et tout le monde rentre le soir
+- Les gens pratiquent la sobriété lorsque l'électricité coûte cher
