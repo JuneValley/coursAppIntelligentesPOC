@@ -3,8 +3,10 @@ import pandas
 from sklearn.ensemble import RandomForestRegressor
 import matplotlib.pyplot as plt
 
+# Ouverture du dataset
 df = pandas.read_csv("consommation_electrique.csv")
 
+# Données de prédiction dans l'ordre : Jour de la semaine, Jour férié, Heure de la journée, Saison, Météo, Température, Vitesse du vent, Prix du KWh
 predict_data = [
 [5, 1, 0, 3, 0, 18, 73, 34] ,
 [5, 1, 1, 3, 0, 18, 76, 34] ,
@@ -42,21 +44,26 @@ def encode_pipeline(df):
 
 df_clean = encode_pipeline(df)
 
+# Constitution des données d'entrainement
 X = df[['jour_semaine', 'jour_ferie', 'heure', 'saison', 'meteo', 'temperature', 'vitesse_vent', 'prix_kwh']]
 y = df['consommation_gw']
 
+# Entrainement d'un modèle de type Random Forest par régression
 clf = RandomForestRegressor()
 clf.fit(X, y)
 
 predict_final = []
 predict_display = []
 
+# Prédiction pour chaque heure de la journée
 for hour in predict_data:
     predict_final.append(clf.predict([[hour[0], hour[1], hour[2], hour[3], hour[4], hour[5], hour[6], hour[7]]]))
 
+# Traitement des données prédites pour affichage
 for final in predict_final:
     predict_display.append(final[0])
 
+# Affichage de la courbe de consommation dans un graphique
 x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
 plt.bar(x,predict_display)
 plt.show()
